@@ -1,3 +1,3 @@
 package com.example.newsactivityrecycler
 
-data class Heading(private  val heading:String)
+data class Heading(private  val titleImage:String, private val heading:String)
