@@ -4,8 +4,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
+private  lateinit var recyclerview:recyclerview
+private  lateinit var newsArray: ArrayList<News>
+private  lateinit var imageId: ArrayList<Int>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        imageId = ArrayOf("R.drawable.ic_baseline_balance_24",
+        "R.drawable.ic_baseline_account_circle_24"
+        )
+
+        heading = ArrayOf(" Account details for all users in the system",
+"Buildings where users account information can be accessed")
+
     }
 }
