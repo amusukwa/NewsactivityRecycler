@@ -19,6 +19,7 @@ private  lateinit var imageId: ArrayList<Int>
 
         heading = ArrayOf(" Account details for all users in the system",
 "Buildings where users account information can be accessed")
+recyclerview =  findViewById<Recylerview>(R.id.news_recycler)
 
     }
 }
