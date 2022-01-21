@@ -19,7 +19,20 @@ private  lateinit var imageId: ArrayList<Int>
 
         heading = ArrayOf(" Account details for all users in the system",
 "Buildings where users account information can be accessed")
-recyclerview =  findViewById<Recylerview>(R.id.news_recycler)
 
+recyclerview =  findViewById<Recylerview>(R.id.news_recycler)
+recyclerview.layoutManager = LinearLayoutManager(this)
+recyclerview.setHasFixedSize(true)
+newsArray = arrayListOf<News>()
+
+getNews()
+    }
+
+    fun getNews(){
+        for (i in imageId.indices){
+            val news = News(imageId[i].heading[i])
+            newsArray.add(news)
+
+        }
     }
 }
