@@ -2,37 +2,48 @@ package com.example.newsactivityrecycler
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.newsactivityrecycler.R.drawable.*
 
-class MainActivity : AppCompatActivity() {
-private  lateinit var recyclerview:recyclerview
-private  lateinit var newsArray: ArrayList<News>
-private  lateinit var imageId: ArrayList<Int>
+class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
+    private lateinit var recyclerview: RecyclerView
+    private lateinit var newsArray: ArrayList<News>
+    private lateinit var imageId: Array<Int>
+    private lateinit var heading: Array<String>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        newsArray = arrayListOf<News>()
 
-        imageId = ArrayOf("R.drawable.ic_baseline_balance_24",
-        "R.drawable.ic_baseline_account_circle_24"
-        )
+        imageId = arrayOf(R.drawable.a,R.drawable.b)
 
-        heading = ArrayOf(" Account details for all users in the system",
-"Buildings where users account information can be accessed")
+        heading = arrayOf<String>("Account details","Office Building of the bank")
 
-recyclerview =  findViewById<Recylerview>(R.id.news_recycler)
-recyclerview.layoutManager = LinearLayoutManager(this)
-recyclerview.setHasFixedSize(true)
-newsArray = arrayListOf<News>()
+        recyclerview = findViewById<RecyclerView>(R.id.news_recycler)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.setHasFixedSize(true)
+        var adapter = MyAdapter(newsArray,this)
 
-getNews()
+
+        getNews()
     }
 
-    fun getNews(){
-        for (i in imageId.indices){
-            val news = News(imageId[i].heading[i])
+    private fun getNews() {
+        for (i in imageId.indices) {
+            val news = News(imageId[i], heading[i])
             newsArray.add(news)
 
         }
+        recyclerview.adapter = MyAdapter(newsArray,this)
     }
+
+    override fun onItemClick(position: Int) {
+        Toast.makeText(this,"Item clicked ",
+            Toast.LENGTH_LONG).show()
+    }
+
 }
