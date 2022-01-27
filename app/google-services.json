@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "592491328589",
+    "project_id": "newsactivityrecycler",
+    "storage_bucket": "newsactivityrecycler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592491328589:android:70144b3172babdc5c71804",
+        "android_client_info": {
+          "package_name": "com.example.newsactivityrecycler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592491328589-e4vpu1advm41nds4ilifto87e4qqv8if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZX0IRnDeTolmfMCQtcdiH8WiBvC5CBpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592491328589-e4vpu1advm41nds4ilifto87e4qqv8if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

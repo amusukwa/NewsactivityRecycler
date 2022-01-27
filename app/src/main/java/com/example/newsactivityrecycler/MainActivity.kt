@@ -1,5 +1,6 @@
 package com.example.newsactivityrecycler
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,7 +15,8 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     private lateinit var heading: Array<String>
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState
+                          : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         newsArray = arrayListOf<News>()
@@ -42,8 +44,13 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     }
 
     override fun onItemClick(position: Int) {
+
+        val intent = Intent(this,
+            NextActivity::class.java)
+        startActivity(intent)
         Toast.makeText(this,"Item clicked ",
             Toast.LENGTH_LONG).show()
+
     }
 
 }
