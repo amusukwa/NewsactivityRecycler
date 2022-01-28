@@ -23,7 +23,7 @@ class MyAdapter(private val newsArray:ArrayList<News>
 
     override fun onBindViewHolder(holder: MyAdapter.MyViewHolder, position: Int) {
         val news:News = newsArray[position]
-        holder.imageTitle.setImageResource(news.titleImage)
+        holder.subtitle.text = news.subtitle
         holder.heading.text = news.heading
 
     }
@@ -33,7 +33,7 @@ class MyAdapter(private val newsArray:ArrayList<News>
     }
 
     inner class MyViewHolder(itemView : ViewGroup):RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val imageTitle: ImageView = itemView.findViewById(R.id.imageTitle)
+        val subtitle: TextView = itemView.findViewById(R.id.subtitle_text)
         val heading: TextView = itemView.findViewById(R.id.heading)
 
         init{

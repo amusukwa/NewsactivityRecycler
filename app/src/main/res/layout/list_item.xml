@@ -6,22 +6,23 @@
     android:layout_height="wrap_content">
 
 
-            <ImageView
-                android:id="@+id/imageTitle"
-                android:layout_width="118dp"
-                android:layout_height="88dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="124dp"
+        android:layout_height="56dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/subtitle_text"
+        app:layout_constraintTop_toTopOf="@+id/subtitle_text" />
 
-            <TextView
-                android:id="@+id/heading"
-                android:layout_width="124dp"
-                android:layout_height="56dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageTitle"
-                app:layout_constraintTop_toTopOf="@+id/imageTitle" />
+    <TextView
+        android:id="@+id/subtitle_text"
+        android:layout_width="46dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="29dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/heading" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

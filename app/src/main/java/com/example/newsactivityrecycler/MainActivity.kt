@@ -35,11 +35,11 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     }
 
     private fun getNews() {
-        for (i in imageId.indices) {
-            val news = News(imageId[i], heading[i])
-            newsArray.add(news)
-
-        }
+//        for (i in imageId.indices) {
+//            val news = News(imageId[i], heading[i])
+//            newsArray.add(news)
+//
+//        }
         recyclerview.adapter = MyAdapter(newsArray,this)
     }
 
