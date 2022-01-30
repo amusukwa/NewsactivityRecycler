@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsactivityrecycler.R.drawable.*
 
 class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     private lateinit var recyclerview: RecyclerView
