@@ -46,11 +46,13 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     override fun onItemClick(position: Int) {
 
         val intent = Intent(this,
-            NextActivity::class.java)
+            NewsActivity::class.java)
         startActivity(intent)
         Toast.makeText(this,"Item clicked ",
             Toast.LENGTH_LONG).show()
 
     }
+
+    fun Gotonews(view: android.view.View) {}
 
 }

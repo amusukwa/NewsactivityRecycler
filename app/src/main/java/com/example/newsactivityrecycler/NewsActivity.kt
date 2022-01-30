@@ -8,4 +8,6 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
     }
+
+    fun sendNews(view: android.view.View) {}
 }
