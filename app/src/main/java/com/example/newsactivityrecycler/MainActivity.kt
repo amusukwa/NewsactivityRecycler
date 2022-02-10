@@ -34,11 +34,21 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     }
 
     private fun getNews() {
-//        for (i in imageId.indices) {
-//            val news = News(imageId[i], heading[i])
-//            newsArray.add(news)
-//
-//        }
+    db = FirebaseFirestore.getInstance()
+        db.collection("news").addSnapshotListener { value, error ->
+            if (error != null) { }
+            for (dc: DocumentChange in value?.documentChanges!!) {
+                if (dc.type == DocumentChange.Type.ADDED) {
+                    newsArray.add(dc.document.
+                    toObject(News::class.java))
+
+                }
+            }
+            recyclerview.adapter = MyAdapter(newsArray,this)
+            adapter.notifyDataSetChanged()
+
+
+}
         recyclerview.adapter = MyAdapter(newsArray,this)
     }
 
