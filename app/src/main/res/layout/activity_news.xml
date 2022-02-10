@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".NewsActivity">
     <EditText
-        android:id="@+id/fullname_edit"
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -26,8 +26,8 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="@+id/fullname_edit"
-        app:layout_constraintTop_toBottomOf="@+id/fullname_edit" />
+        app:layout_constraintStart_toStartOf="@+id/heading"
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
 
 
     <Button

@@ -3,6 +3,7 @@ package com.example.newsactivityrecycler
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
 class NewsActivity : AppCompatActivity() {
@@ -15,15 +16,15 @@ class NewsActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
 
         val headingtxt: TextView = findViewById<TextView>(R.id.heading)
-        val subtitletxt: TextView = findViewById<TextView>(R.id.subtitle_text)
+        val subtitletxt: TextView = findViewById<TextView>(R.id.proficiency_edit)
 
         val heading = headingtxt.text.toString()
         val subtitle = subtitletxt.text.toString()
 
-        //adding data to firestore
-        db.collection("mentors")
-
         val news:News = News(heading,subtitle)
 
+        //adding data to firestore
+        db.collection("News").add(news)
+        Toast.makeText(this,"added",Toast.LENGTH_SHORT).show()
     }
 }

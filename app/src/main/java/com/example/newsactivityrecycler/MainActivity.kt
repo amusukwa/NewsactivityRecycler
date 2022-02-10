@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     private lateinit var recyclerview: RecyclerView
@@ -34,15 +36,12 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     }
 
     private fun getNews() {
-        
-// val docRef = db.collection("cities").document("BJ")
-// docRef.get().addOnSuccessListener { documentSnapshot ->
-//     val city = documentSnapshot.toObject<City>()
-// }
 
 
-    db = FirebaseFirestore.getInstance()
-        db.collection("news").get().addSnapshotListener { value, error ->
+
+
+  val  db = FirebaseFirestore.getInstance()
+        db.collection("news").addSnapshotListener { value, error ->
             if (error != null) { }
             for (dc: DocumentChange in value?.documentChanges!!) {
                 if (dc.type == DocumentChange.Type.ADDED) {
@@ -52,10 +51,15 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
                 }
             }
             recyclerview.adapter = MyAdapter(newsArray,this)
-            adapter.notifyDataSetChanged()
 
 
 }
+        // db.collection("cities").document("BJ")
+// docRef.get().addOnSuccessListener { documentSnapshot ->
+//     val news = documentSnapshot.toObject<City>()
+
+
+
         recyclerview.adapter = MyAdapter(newsArray,this)
     }
 
