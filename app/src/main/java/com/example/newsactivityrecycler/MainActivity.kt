@@ -34,8 +34,15 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
     }
 
     private fun getNews() {
+        
+// val docRef = db.collection("cities").document("BJ")
+// docRef.get().addOnSuccessListener { documentSnapshot ->
+//     val city = documentSnapshot.toObject<City>()
+// }
+
+
     db = FirebaseFirestore.getInstance()
-        db.collection("news").addSnapshotListener { value, error ->
+        db.collection("news").get().addSnapshotListener { value, error ->
             if (error != null) { }
             for (dc: DocumentChange in value?.documentChanges!!) {
                 if (dc.type == DocumentChange.Type.ADDED) {
