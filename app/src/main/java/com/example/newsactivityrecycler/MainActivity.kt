@@ -9,27 +9,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 
-class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
+class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener {
     private lateinit var recyclerview: RecyclerView
     private lateinit var newsArray: ArrayList<News>
     private lateinit var imageId: Array<Int>
     private lateinit var heading: Array<String>
 
 
-    override fun onCreate(savedInstanceState
-                          : Bundle?) {
+    override fun onCreate(
+        savedInstanceState
+        : Bundle?
+    ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         newsArray = arrayListOf<News>()
 
-        imageId = arrayOf(R.drawable.a,R.drawable.b)
+        imageId = arrayOf(R.drawable.a, R.drawable.b)
 
-        heading = arrayOf<String>("Account details","Office Building of the bank")
+        heading = arrayOf<String>("Account details", "Office Building of the bank")
 
         recyclerview = findViewById<RecyclerView>(R.id.news_recycler)
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.setHasFixedSize(true)
-        var adapter = MyAdapter(newsArray,this)
+        var adapter = MyAdapter(newsArray, this)
 
 
         getNews()
@@ -37,43 +39,44 @@ class MainActivity : AppCompatActivity(),MyAdapter.OnItemClicklistener{
 
     private fun getNews() {
 
+//
+//  val  db = FirebaseFirestore.getInstance()
+//        db.collection("news").addSnapshotListener { value, error ->
+//            if (error != null) { }
+//            for (dc: DocumentChange in value?.documentChanges!!) {
+//                if (dc.type == DocumentChange.Type.ADDED) {
+//                    newsArray.add(dc.document.
+//                    toObject(News::class.java))
+//
+//                }
+//            }
+//            recyclerview.adapter = MyAdapter(newsArray,this)
+//
+//
+//}
+        val db = FirebaseFirestore.getInstance()
+        db.collection("News").get().addOnSuccessListener { documentSnapshot ->
+            val news = documentSnapshot.toObjects(News::class.java)
+            recyclerview.adapter = MyAdapter(newsArray, this)
+        }
 
 
 
-  val  db = FirebaseFirestore.getInstance()
-        db.collection("news").addSnapshotListener { value, error ->
-            if (error != null) { }
-            for (dc: DocumentChange in value?.documentChanges!!) {
-                if (dc.type == DocumentChange.Type.ADDED) {
-                    newsArray.add(dc.document.
-                    toObject(News::class.java))
+        fun sendActivity(view: android.view.View) {
+            val intent = Intent(
+                this,
+                NewsActivity::class.java
+            )
+            startActivity(intent)
+        }
 
-                }
-            }
-            recyclerview.adapter = MyAdapter(newsArray,this)
-
-
-}
-        // db.collection("cities").document("BJ")
-// docRef.get().addOnSuccessListener { documentSnapshot ->
-//     val news = documentSnapshot.toObject<City>()
-
-
-
-        recyclerview.adapter = MyAdapter(newsArray,this)
     }
 
     override fun onItemClick(position: Int) {
-
-        Toast.makeText(this,"Item clicked ",
-            Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            this, "Item clicked ",
+            Toast.LENGTH_LONG
+        ).show()
 
     }
-
-    fun sendActivity(view: android.view.View) {
-        val intent = Intent(this,
-            NewsActivity::class.java)
-        startActivity(intent)
-    }
-
 }
