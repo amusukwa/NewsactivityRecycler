@@ -1,3 +1,5 @@
 package com.example.newsactivityrecycler
 
-data class News(val subtitle:String, val heading:String)
+data class News(var subtitle:String ?= null, var heading:String?=null){
+    fun News(subtitle: String?= null,heading: String?=null) {}
+}
